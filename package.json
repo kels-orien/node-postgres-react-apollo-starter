@@ -1,0 +1,48 @@
+{
+  "name": "node-postgres-react-apollo-starter",
+  "version": "1.0.0",
+  "description": "Starter kit for a Server/client application using  Node, Postgres, React and Apollo GraphQL.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kels-orien/node-postgres-react-apollo-starter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-2017": "0.0.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.6"
+  },
+  "bugs": {
+    "url": "https://github.com/kels-orien/node-postgres-react-apollo-starter/issues"
+  },
+  "homepage": "https://github.com/kels-orien/node-postgres-react-apollo-starter#readme",
+  "dependencies": {
+    "apollo-server": "^2.2.0",
+    "apollo-server-express": "^2.2.0",
+    "bcrypt": "^3.0.2",
+    "cors": "^2.8.5",
+    "dataloader": "^1.4.0",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "graphql": "^14.0.2",
+    "graphql-resolvers": "^0.2.2",
+    "jsonwebtoken": "^8.3.0",
+    "pg": "^7.6.1",
+    "sequelize": "^4.41.1",
+    "uuid": "^3.3.2"
+  }
+}
