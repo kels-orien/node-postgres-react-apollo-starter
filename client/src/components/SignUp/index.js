@@ -1,5 +1,6 @@
 import React from "react";
 import SignUpForm from "../../containers/SignUpForm";
+import { withRouter } from "react-router-dom";
 
 const SignUp = ({ history, refetch }) => (
   <div>
@@ -8,4 +9,4 @@ const SignUp = ({ history, refetch }) => (
   </div>
 );
 
-export default SignUp;
+export default withRouter(SignUp);

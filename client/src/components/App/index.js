@@ -14,7 +14,11 @@ const App = ({ session, refetch }) => (
 
       <hr />
 
-      <Route exact path={routes.DASHBOARD} component={() => <DashBoard />} />
+      <Route
+        exact
+        path={routes.DASHBOARD}
+        component={() => <SignUp refetch={refetch} />}
+      />
       <Route
         exact
         path={routes.SIGNUP}

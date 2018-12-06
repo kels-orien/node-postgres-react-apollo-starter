@@ -10,6 +10,7 @@
     "apollo-link-error": "^1.1.2",
     "apollo-link-http": "^1.5.7",
     "bulma": "^0.7.2",
+    "classnames": "^2.2.6",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "history": "^4.7.2",
