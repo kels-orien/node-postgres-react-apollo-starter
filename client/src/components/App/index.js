@@ -6,6 +6,7 @@ import SignUp from "../SignUp";
 import SignIn from "../SignIn";
 import * as routes from "../../constants/routes";
 import history from "../../constants/history";
+import SignInForm from "../../containers/SignInForm";
 
 const App = ({ session, refetch }) => (
   <Router history={history}>
@@ -27,7 +28,7 @@ const App = ({ session, refetch }) => (
       <Route
         exact
         path={routes.SIGNIN}
-        component={() => <SignIn refetch={refetch} />}
+        render={props => <SignInForm {...props} refetch={refetch} />}
       />
     </div>
   </Router>

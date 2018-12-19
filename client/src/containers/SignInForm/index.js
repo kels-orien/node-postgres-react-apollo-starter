@@ -1,5 +1,10 @@
 import React, { Component } from "react";
+import {NavLink} from 'react-router-dom';
+import { Mutation } from 'react-apollo';
 import { SIGNIN_USER } from "./../../graphql";
+import classNames from 'classnames';
+import * as Cookies from "es-cookie";
+import { Helmet } from 'react-helmet';
 
 const INITIALSTATE = {
   firstname: "",
@@ -7,10 +12,11 @@ const INITIALSTATE = {
   email: "",
   username: "",
   password: "",
-  confirmPassword: ""
+  confirmPassword: "",
+  error:""
 };
 
-class SignInForm extends React.Component {
+class SignInForm extends Component {
 
   constructor(props){
       super();
@@ -35,21 +41,18 @@ class SignInForm extends React.Component {
       event.preventDefault();
       signinUser().then(async ({data}) => {
           Cookies.set('token', data.signinUser.token);
-          await this.props.refetch();
+          //await this.props.refetch();
           this.clearState();
           this.props.history.push('/dashboard');
 
       }).catch(error => {
-          this.setState({
-              error: error.graphQLErrors.map(x => x.message)
-          })
-          console.error("ERR =>", error.graphQLErrors.map(x => x.message));
+          
+          console.error("ERR =>", error);
       });
   }
 
   validate() {
       const { email, password } = this.state
-      this.state;
       const isInvalid = !email || !password;
       return isInvalid;
   }
@@ -65,7 +68,7 @@ class SignInForm extends React.Component {
   render(){
 
       const { email, password } = this.state
-      this.state;
+     
       
       return (
           <div className="column column_12_12">
@@ -142,5 +145,5 @@ class SignInForm extends React.Component {
   }
 }
 
-export default withRouter(Signin);
+export default SignInForm;
 
