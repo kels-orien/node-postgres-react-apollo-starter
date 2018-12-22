@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { combineResolvers } from "graphql-resolvers";
 import "dotenv/config";
 
 const createToken = (user, secret, expiresIn) => {
@@ -17,8 +18,6 @@ const createToken = (user, secret, expiresIn) => {
 
 export default {
   Query: {
-    users: async (parent, args, { models }) => await models.User.findAll(),
-
     user: async (parent, { id }, { models }) => await models.User.findById(id),
     currentUser: async (parent, args, { models, currentUser }) => {
       if (!currentUser) {
@@ -26,7 +25,26 @@ export default {
       }
 
       return await models.User.findById(currentUser.id);
-    }
+    },
+    users: combineResolvers(
+      isAdmin,
+      async (parent, args, { models }) => await models.User.findAll()
+    ),
+    updateUser: combineResolvers(
+      isAuthenticated,
+      async (parent, { username }, { models, currentUser }) => {
+        const user = await models.User.findById(currentUser.id);
+        return await user.update({ username });
+      }
+    ),
+
+    deleteUser: combineResolvers(
+      isAdmin,
+      async (parent, { id }, { models }) =>
+        await models.User.destroy({
+          where: { id }
+        })
+    )
   },
   Mutation: {
     signupUser: async (
